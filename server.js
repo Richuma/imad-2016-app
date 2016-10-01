@@ -52,11 +52,11 @@ var htmltemplate = `
  return htmlTemplate;
 }
 app.get('/', function (req, res) {
-  res.send(createTemplate(aticleOne));
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article-one', function(eq,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+  res.send(createTemplate(aticleOne));
 });
 
 app.get('/article-two', function(eq,res){
