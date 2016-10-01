@@ -6,13 +6,26 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articleOne= {
-  title:    'Article One: Richard',
-  haeding: 'Article One',
-  date: 'Sep 5,2016',
-  content: 'This is my first conset page This is my first conset pageThis is my first conset pageThis is my first conset page This is my first conset page This is my first conset page This is my first conset page This is my first conset page '
+var articles = { 
+    'article-one': {
+    title:    'Article One: Richard',
+    haeding: 'Article One',
+    date: 'Sep 5,2016',
+    content: 'This is my first conset page This is my first conset pageThis is my first conset pageThis is my first conset page This is my first conset page This is my first conset page This is my first conset page This is my first conset page '
+    },
+    'article-two': {
+            title:    'Article Two: Richard',
+        haeding: 'Article Two',
+        date: 'Sep 9,2016',
+        content: 'This is my second '
+        },
+    'article-three': {
+        title:    'Article Three: Richard',
+    haeding: 'Article Three',
+    date: 'Sep 11,2016',
+    content: 'This is my thrid'
+    }
 };
-
 function createTemplate(data){
 var title = data.title;
 var date  = data.date;
@@ -51,20 +64,14 @@ var htmltemplate = `
 `;
  return htmlTemplate;
 }
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function(eq,res){
-  res.send(createTemplate(aticleOne));
-});
-
-app.get('/article-two', function(eq,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three', function(eq,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+app.get('/:articleName', function(eq,res){
+    var articles = req.params.articleName;
+  res.send(createTemplate(aticlea[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
