@@ -5,6 +5,15 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+
+var content = {
+  title:    'Article One: Richard',
+  haeding: 'Article One',
+  date: 'Sep 5,2016',
+  content: 'This is my first conset page This is my first conset pageThis is my first conset pageThis is my first conset page This is my first conset page This is my first conset page This is my first conset page This is my first conset page '
+};
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
